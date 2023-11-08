@@ -1,0 +1,23 @@
+<%# コントローラーの変数をjsへ送る %>
+<%=include_gon%>
+<%= form_with model: @order, id: 'charge-form', class: "card-form" do |f|%>
+<%# @orderをmodelと読み替え %>
+<%= render 'error_messages' , model: @order %>
+  <div class='form-wrap'>
+    <%= f.label :price, "金額" %>
+    <%= f.text_field :price, class:"price", placeholder: "例) 2000"%>
+  </div>
+  <div class='form-wrap'>
+    <p>カード番号</p>
+  <div id="number-form" class="input-default"></div>
+  </div>
+  <div class='form-wrap'>
+    <p>期限</p>
+  <div id="expiry-form" class="input-default"></div>
+  </div>
+  <div class='form-wrap'>
+    <p>カード背面4桁もしくは3桁の番号</p>
+  <div id="cvc-form" class="input-default"></div>
+  </div>
+  <%= f.submit "購入", class:"button", id: "button"%>
+<% end %>
